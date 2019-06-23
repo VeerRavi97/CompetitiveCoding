@@ -1,0 +1,79 @@
+
+// USE cin.ignore before using getline(cin,InputString)
+This is done to discard the deliminator from the input stream buffer.
+Suppose before using getline,you had taken some input 123 or veer( the 
+stream reader had 123\n or veer\n) ,cin reads 123 or veer leaving \n in the stream. 
+getline again reads till \n ,the first element in the buffer
+so no input will be read. To avoid this,  use cin.ignore() before getline.
+//
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios :: sync_with_stdio(0);
+    cin.tie(false);
+    int x;
+    cin >> x;
+    cin.ignore();
+
+    cout << x << " \n";
+    string s2;
+    getline(cin,s2);
+
+    cout << s2 << "\n";
+
+   string s1;
+   cin >> s1;
+    cout << s1 <<
+    "\n";
+
+}
+
+// Better to use scanf and printf.other option is cin and cout with 
+sync_with_stdio(0);
+cin.tie(0);
+first option is still faster.
+//
+scanf("%d",&x);
+scanf("%lld",&x);
+scanf("%s",string);
+scanf("%c",&char);
+scanf("%lf", double);
+scanf("%Lf",long double); // avoid to use this 
+
+//
+double pi=3.14984646788978768;   // don't use long double for printf,80-bit long double. In most cases,
+double is enough, but long double is more accurate
+
+ printf("%0.4lf\n",pi);
+cout << fixed << setprecision(4) << pi << "\n"; // up to 4 decimal points
+//
+
+
+
+// To compare two floating numbers use 
+   if(abs(x-y)<1e-9) 
+   {
+   
+   
+   }
+//
+
+
+// In Case of Modulo,Use 
+if(x<0) x+=m;
+if result is too large,then use
+(a*b) % m  
+(a-b) % m  
+(a+ b) % m
+Not for Divison
+where const unsigned int m=1000000007;
+
+an array of size 10 ^ 6 contains 4MB memory .
+standard memory size is 256MB.
+   
+   
+   
+
+

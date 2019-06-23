@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ll BasetoDecimal(ll n,ll b)
+{
+
+    ll decimal=0;
+    ll multiplier=1; // 2^0
+    while(n>0)
+    {
+        ll lastdigit=n%10;
+        decimal+=lastdigit*multiplier;
+        multiplier*=b; // modify multiplier
+        n/=10;
+
+    }
+
+    return decimal;
+
+
+}
+ ll DecimaltoBase(int n,int b)
+ {
+ int result=0;
+  int multiplier=1;
+  while(n>0)
+{
+result+=n%b*multiplier;
+multiplier*=10;
+n/=b;
+}
+return result;
+}
+
+int main()
+{
+    cout << " enter number n in base b to be converted in decimal" << " \n";
+    ll n,b;
+    cin >> n >> b;
+    ll ans=BasetoDecimal(n,b);
+    cout << ans << "\n";
+    ll ans1=DecimaltoBase(ans,b);
+    cout << ans1 << " \n";
+
+
+
+
+
+}

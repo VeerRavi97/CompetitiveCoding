@@ -1,0 +1,53 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define all(c) (c).begin(),(c).end()
+
+int main()
+{
+    ios :: sync_with_stdio(0);
+    cin.tie(0);
+
+    int tc;
+    cin >> tc;
+    while(tc--)
+    {
+        ll n,s,m,ans=10000000000000;
+      cin >> n >> s ;
+      vector <ll > v;
+      ll sum=0;
+
+      for(int i=0;i<n;i++)
+      {
+
+          ll se;
+          cin >> se;
+          v.push_back(se);
+      }
+
+      sort(v.begin(),v.end());
+
+
+for(int i=0;i<n;i++)
+     {
+         sum+=v[i];
+       ll rest=(n-i-1)*v[i];
+       // cout << "rest " << rest << "\n";
+        //cout << "result " << v[i]*rest<< "\n";
+        if((rest+sum)==s)
+
+         ans=min(ans,v[i]);
+         //cout << "ans " << ans << "\n";
+     }
+
+
+if(ans<10000000000000)
+    cout << ans << "\n";
+    else
+      cout << "-1" << "\n";
+
+    }
+
+
+}

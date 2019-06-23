@@ -1,0 +1,112 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef vector <ll > vi;
+typedef pair <ll,ll > ii;
+#define all(c) (c).begin(),(c).end()
+
+int main()
+{
+
+      ll t;
+    cin >> t;
+
+while(t--)
+{
+
+    ll n,m;
+    cin >> n >> m;
+    vi ca(n);
+    vector < ii> co;
+    for(ll i=0;i<n;i++){
+        ll x;
+        cin >> x;
+        ca[i]=x;
+    }
+    for(ll i=0;i<m;i++)
+    {
+        ll x,y;
+
+        cin >> x >> y;
+        co.push_back(make_pair(x,y));
+    }
+
+    vi h(m);
+    for(ll i=0;i<m;i++)
+        h[i]=co[i].second;
+
+    string s[n];
+
+    for(ll i=0;i<n;i++)
+
+
+        cin >> s[i];
+        ll count=0;
+        ll sum=0;
+    for(ll i=0;i<n;i++)
+    {
+    //   printf("for person %d\n",i);
+     //  for(ll i=0;i<m;i++)
+
+
+          //  cout << co[i].first << " " << co[i].second << "\n";
+
+// cout << "\n";
+
+      ll ma=-1;
+        ll ans=0;
+
+       for(ll j=0;j<m;j++)
+       {
+          if(s[i][j]-'0'==1)
+           {
+
+              if(co[j].first>=ca[i] && co[j].second>=1)
+              {
+                  if(co[j].first>ans)
+                    ma=j;
+
+
+
+                   ans=max(ans,co[j].first);
+
+           }
+           }
+          // cout << "max " << ans << "at " << ma << "\n";
+
+       }
+       if(ma>-1){
+          // printf("company %d\n",ma);
+
+   // cout << "offered salary " << co[i].first << " limit " << co[i].second << "\n";
+
+                    count++;
+                 co[ma].second--;
+                 sum+=co[ma].first;
+                //  cout << "selected at company " << ma <<  "\n";
+                 }
+
+
+           }
+
+
+ll sum2=0;
+ll cnt=0;
+    for(ll i=0;i<m;i++)
+    {
+       if(co[i].second==h[i])
+        cnt++;
+
+
+    }
+    cout << count <<" " << sum << " " << cnt << "\n";
+}
+
+
+
+}
+
+
+
+

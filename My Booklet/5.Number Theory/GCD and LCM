@@ -1,0 +1,2 @@
+use inbuilt function,__gcd(x,y)
+and lcm=(a*b)/__gcd(a,b)

@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+int main()
+{
+    ll in;
+    cin >> in;
+    // to calculate least significant digit
+    ll x=in%10;
+    cout << x << "\n";
+
+    double k=log10(in);
+    // to calculate the number of digits
+    ll n=floor(k) +1;
+    // to calculate Most significant digit
+
+    k=k-floor(k);
+    int x1=pow(10,k);
+    cout << x1 << "\n";
+    cout << n << "\n ";
+    if(in &1)
+        cout << "ODD" << "\n";
+    else
+        cout << "EVEN" << "\n";
+        // to tranform in to uppercase
+        cin.ignore();
+        string s="asfjfhjf asdfhaf afhsj ";
+        transform(s.begin(),s.end(),s.begin(),:: toupper);
+        cout << s << "\n";
+// for single character
+s[1]=tolower(s[1]);
+cout << s << "\n";
+
+
+// if input is too large ex:-n=10000000000000000000000000
+take input as a string
+// sum till i'th position
+from beginning,sum1+=arr[i];
+from end,sum2+=completesum-(sum1+arr[i]);
+
+
+//to find the middle point,use mid=low+(high-low)>>1);  // integer overflow becomes 
+an issue in case pf (low+high)/2
+
+
+
+
+}

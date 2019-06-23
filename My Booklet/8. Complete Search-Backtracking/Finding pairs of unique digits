@@ -1,0 +1,41 @@
+// UVa 725
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+   ll n;
+   cin >> n;
+   ll start=01234;
+   ll last=98765;
+   for(ll first=start;first<=last/n;first++) // pair of (first,second)
+   {
+       ll temp,allones=(first<10000);
+       ll second=first*n;
+       temp=first;
+       while(temp)
+       {
+           ll temp1=temp%10;
+           allones|=(1<<temp1);
+           temp=temp/10;
+       }
+        temp=second;
+       while(temp)
+       {
+           ll temp1=temp%10;
+           allones|=(1<<temp1);
+           temp=temp/10;
+       }
+       if(allones==(1<<10)-1)
+        cout << first << " " << second << " \n";
+
+
+
+   }
+
+
+
+
+
+
+}

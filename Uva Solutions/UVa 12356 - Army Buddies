@@ -1,0 +1,44 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector <int > vi;
+int main()
+{
+    int ns,nr;
+         vi l(100001);
+         vi m(100001);
+        vi r(100001);
+
+    while((scanf("%d%d",&ns,&nr)),(ns|| nr)) // no of soldiers and reports
+    {
+       // left,middle,right
+        for(int i=1;i<=ns;i++)
+        {
+           l[i]=i-1;
+            m[i]=i;
+           r[i]=i+1;
+        }
+        l[1]=-1;
+        r[ns]=-1;
+        for( int i=1;i<=nr;i++)
+        {
+            int c=0,d=0;
+            scanf("%d%d",&c,&d);
+            if(l[c]!=-1)
+                printf("%d",l[c]);
+            else
+               printf("*");
+
+             if(r[d]!=-1)
+                printf(" %d",r[d]);
+            else
+               printf(" *");
+            r[l[c]]=r[d];
+            l[r[d]]=l[c];
+
+            printf("\n");
+            }
+
+            printf("-\n");
+    }
+}

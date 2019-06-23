@@ -1,0 +1,42 @@
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef  long long ll;
+
+int main()
+ {
+
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	ll tc;
+	cin >> tc;
+	while(tc--)
+	{
+	    ll n,m,max=0;
+	    cin >> n >> m;
+    ll sum = m;
+    ll a = 1;
+    ll b = 1;
+    ll c = -sum*2;
+
+    ll delta = b*b - 4*a*c;
+
+       long  double x1 = -b + sqrt(delta);
+        x1 /= 2*a;
+        ll ans=ceil(x1);
+
+
+if(ans<=n)
+    cout << ans <<"\n";
+    else
+        cout << "-1" << "\n";
+
+
+
+
+
+	}
+	return 0;
+}

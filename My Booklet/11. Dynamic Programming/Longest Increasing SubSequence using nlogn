@@ -1,0 +1,78 @@
+
+#include <algorithm>
+#include <cstdio>
+#include <stack>
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+#define MAX_N 1000001
+#define clr(x) memset(x, 0, sizeof(x))
+ll sub[MAX_N];
+ll arr[MAX_N];
+ll sub_id[MAX_N];
+ll parent[MAX_N];
+
+void findlcs(ll end,ll k1) {
+  ll lis[end];
+ cout << "parent" << "\n";
+ for(int k=0;k<11;k++)
+      cout << parent[k] << " ";
+      cout << "\n";
+
+
+  for(ll i=end-1;i>=0;i--)
+  {
+      lis[i]=arr[k1];
+      k1=parent[k1];
+  }
+ for(int i=0;i<end;i++)
+cout << lis[i] << " ";
+cout << "\n";
+
+}
+
+int main() {
+    ll t;
+    //scanf("%d",&t);
+    //while(t--)
+       // {
+
+     ll n;
+  scanf("%lld",&n);
+    clr(arr);
+  for(ll i=0;i<n;i++)
+  {
+      ll in;
+      scanf("%lld",&in);
+      arr[i]=in;
+
+  }
+
+  memset(parent,-1,sizeof(parent));
+      ll len= 0;
+     for (ll i = 0; i < n; ++i)
+    {
+      ll pos = lower_bound(sub, sub+ len, arr[i]) - sub;
+    sub_id[pos] = i;
+    sub[pos]=arr[i];
+    if(pos>0)
+    parent[i] =  sub_id[pos - 1];
+
+    if (pos + 1 > len) {
+      len = len+ 1;
+    }
+     }
+  ll k=sub_id[len-1];
+  //cout << "sub\n";
+ // for(int k=0;k<n;k++)
+       // cout << sub_id[k] << " ";
+      //  cout << "\n";
+
+  cout << len << "\n";
+  findlcs(len,k);
+
+
+//}
+return 0;
+}

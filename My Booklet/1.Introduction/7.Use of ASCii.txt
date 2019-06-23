@@ -1,0 +1,35 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    cout <<  "If you have taken 'int' input as string and want to convert in to Integer
+    int n=3;
+    // 1213
+    // 2134
+    // 4244
+  vector <string > s(n);
+    for(int i=0;i<3;i++)
+    {
+        cin >> s[i];
+    }
+for(int i=0;i<3;i++)
+    for(int j=0;j<s[i].length();j++)
+    {
+        // your solution here
+
+    cout << 7+s[i][j]-'0'<< "\n";
+    }
+
+    cout << "If you have taken input string and want to convert in to integer " << "\n";
+    string s1="ravi";// similarly for upper case, except subtract with 'A'
+    vector < int > v;
+    for(int i=0;i<s1.length();i++)
+    {
+        v.push_back(s1[i]-'a');
+    }
+    for(int i=0;i<v.size();i++)
+        cout << v[i] << "\n";
+
+
+}

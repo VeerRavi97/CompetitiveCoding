@@ -1,0 +1,60 @@
+
+
+#include<bits/stdc++.h>
+using namespace  std;
+int main()
+{
+   ios :: sync_with_stdio(0);
+    cin.tie(0);
+    int tc;
+
+    cin >> tc;
+   cin.ignore();
+
+    while(tc--)
+    {
+
+       string s;
+       getline(cin,s);
+      transform(s.begin(),s.end(), s.begin(), ::tolower);
+       int x1=s.find_first_of(' ');
+       int x2=s.find_last_of(' ');
+
+       if((x1==x2) && (x2==-1))
+        {
+
+            s[0]=toupper(s[0]);
+            cout << s << "\n";
+
+        }
+       else if ((x1==x2) && (x2!=-1))
+       {
+           string s1,s2;
+           s1=toupper(s[0]);
+           int j=0;
+           int m=s.length()-x2;
+
+         s2=s.substr(x2,m);
+         s2[1]=toupper(s2[1]);
+           cout << s1 << "." << s2 << "\n";
+
+       }
+   else
+   {
+     string s1,s2,s3;
+           s1=toupper(s[0]);
+           s2=toupper(s[x1+1]);
+           int j=0;
+           int m=s.length()-x2;
+
+         s3=s.substr(x2,m);
+         s3[1]=toupper(s3[1]);
+           cout << s1 << "." <<" "<< s2 << "." << s3 << "\n";
+
+}
+
+
+
+    }
+}
+

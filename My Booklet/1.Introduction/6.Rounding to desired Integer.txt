@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    const double pi=3.14234632764326234;
+    cout << floor(pi) << "\n"; // 3
+ cout << ceil(pi) << "\n"; // 4
+  cout << round(pi) << "\n"; // 3
+   cout << trunc(pi) << "\n"; //3 
+
+
+
+
+
+
+}

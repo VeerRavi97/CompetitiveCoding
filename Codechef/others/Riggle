@@ -1,0 +1,31 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+    ios :: sync_with_stdio(0);
+    cin.tie(0);
+
+    int tc;
+    int a,b,m,count=0;
+    cin >> tc;
+    while(tc--)
+    {
+
+      cin >> a >> b >> m;
+      if((b-a) >=m)
+         {
+       if ((a%m)!=0)
+        a=a+(m-(a%m));
+
+      count=(b-a)/m;
+      count ++;
+         }
+      else
+        count=0;
+
+
+    cout << count << "\n";
+}
+}
