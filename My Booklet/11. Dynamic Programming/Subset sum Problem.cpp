@@ -1,5 +1,4 @@
-ttps://practice.geeksforgeeks.org/problems/subset-sum-problem/0
-
+// https://practice.geeksforgeeks.org/problems/subset-sum-problem/0
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -19,10 +18,10 @@ ll solve( ll sum,ll n)
     rsum=sum/2;
     cnt[0]=1;
     for( ll k=1;k<=n;k++)
-    for (ll x=rsum;x>=0;x--){
+    for (ll x=rsum;x>=v[k];x--){
 
-        if(cnt[x])
-            cnt[x+v[k]]+=1;
+        if(cnt[x-v[k]])
+            cnt[x]+=1;
     }
     return cnt[rsum];
 

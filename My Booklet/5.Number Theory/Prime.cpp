@@ -7,30 +7,23 @@ typedef vector<int> vi;
 #define fast                 \
     ios::sync_with_stdio(0); \
     cin.tie(0);
-
+const ll MOD=1e9+7;
 vi primes;
-void sieve(ll MAX_N)
-{
-    vi marked(MAX_N+1,1);
-    marked[0] = marked[1] = 0;
-    marked[2] = 1;
-    primes.push_back(2); // 2 is only even prime number
-    for (ll i = 4; i <= MAX_N; i += 2)
-    { // eliminate all even numbers
-        marked[i] = 0;
-    }
-    for (ll i = 3; i <= MAX_N; i += 2)
-    {
-        if (marked[i])
-        {
-             primes.push_back(i);
-            for (ll j = i * i; j <= MAX_N; j += i)
-            {
-                marked[j] = 0;
-            }
-           
-        }
-    }
+#define upperbound 1000000
+bitset<1000010>bs;
+void sieve(){
+    bs.set();
+ bs[0]=bs[1]=0;
+ primes.push_back(2);
+ for(ll i=4;i<=upperbound;i+=2) bs[i]=0;
+ for(ll i=3;i<=upperbound;i+=2){
+     if(bs[i]){
+         primes.push_back(i);
+         for(ll j=i*i;j<=upperbound;j+=i)
+            bs[j]=0;
+     }
+ }
+
 }
 
 bool isprime(ll n)
@@ -52,29 +45,33 @@ bool isprime(ll n)
 
     return true;
 }
-
-void segmented_sieve(ll l,ll r){
+ll segmented_sieve(ll l,ll r){
+    ll ans=1;
 ll m=sqrt(r);
-sieve(m);
 ll diff=r-l+1;
 vi range(diff,1);
-for(ll i=0;i<primes.size();i++){
-   for(ll j=l;j<=r;j++){
-       if(j==primes[i]) continue;
+for(ll i=0;i<primes.size() &&primes[i]*primes[i]<=r;i++){
+    ll pf=primes[i];
+    ll base=(l/pf)*pf;
+    if(base<l) base+=pf;
+   for(ll j=base;j<=r;j+=pf){
        if(j%primes[i]==0) range[j-l]=0;
-
+   }
+   if(base==pf){
+       range[base-l]=1;
    }
 
 }
 
 for(ll i=0;i<diff;i++){
   if(range[i]){
-      cout << i+l << " ";
+       ans= (ans*(i+l))%MOD;
   }
 }
-
+return ans;
 
 }
+
 
 void finddivisors(ll n,vector<ll>&divisors){
 for (int x = 2; x*x <= n; x++) {
@@ -87,17 +84,16 @@ if (n > 1) divisors.push_back(n);
 }
 
 void prime_factorization( ll n,vector<ll>&primefactors){
-   ll p=primes[0];
-    ll i=0;
-   while(p*p<=n){
-       if(n%p==0){
-           primefactors.push_back(p);
-           while(n%p==0){
-               n=n/p;
+   ll pf=primes[0];
+    ll pf_index=0;
+   while(pf*pf<=n){
+       if(n%pf==0){
+           primefactors.push_back(pf);
+           while(n%pf==0){
+               n=n/pf;
            }
        }
-       i++;
-       p=primes[i];
+       pf=primes[++pf_index];
    }
     if(n!=1) primefactors.push_back(n);
 
@@ -165,7 +161,7 @@ while(pf*pf<=n){
 }
 if(n!=1) {
 
- ans *= (((ll)(pow(pf, 2.0)+0.5)) - 1) / (n - 1);
+ ans *= (((ll)(pow(n, 2.0)+0.5)) - 1) / (n - 1);
 }
   
 
@@ -191,21 +187,25 @@ return ans;
 int main()
 {
     fast;
-     sieve(10000);
-     ll n;
-     cin >> n;
-    ll ans=numpf(n);
-    ll ans2=distinctnumpf(n);
-    vector<ll>divisors;
-    finddivisors(n,divisors);
-    for(auto x:divisors){
-        cout << x << " ";
-    }
-    cout << "\n";
-    ll ans3=numDiv(n);
-    ll ans4=sumDiv(n);
-    ll ans5=0;
-    ans5=EulerPhi(n);
-      cout << ans << " " << ans2 << " " << ans3 << " " << ans4 <<" " << ans5 <<  "\n";
+     sieve();
+    //  ll n;
+    //  cin >> n;
+     ll l,r;
+     cin >> l >> r;
+    ll ans= segmented_sieve(l,r);
+    cout << ans << "\n";
+    // ll ans=numpf(n);
+    // ll ans2=distinctnumpf(n);
+    // vector<ll>divisors;
+    // finddivisors(n,divisors);
+    // for(auto x:divisors){
+    //     cout << x << " ";
+    // }
+    // cout << "\n";
+    // ll ans3=numDiv(n);
+    // ll ans4=sumDiv(n);
+    // ll ans5=0;
+    // ans5=EulerPhi(n);
+    //   cout << ans << " " << ans2 << " " << ans3 << " " << ans4 <<" " << ans5 <<  "\n";
     
 }

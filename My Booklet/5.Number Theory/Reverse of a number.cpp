@@ -1,21 +1,21 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
- int reverse(int x) {
-        
-        int ans = 0;
-        while (x) {
-            int temp = ans * 10 + x % 10;
-            cout << temp << " ";
-            if (temp / 10 != ans)
-                return 0;
-            ans = temp;
-            x /= 10;
-        }
-        return ans;
+int reverse(int n)
+{
+
+    int reversed = 0;
+    while (n)
+    {
+        int lastdigit = n % 10;
+        reversed = reversed * 10 + lastdigit;
+        cout << reversed << " ";
+        n /= 10;
     }
-    
-int main(){
-    
+    return reversed;
+}
+
+int main()
+{
+
     cout << reverse(1156469);
-    
 }

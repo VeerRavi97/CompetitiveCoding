@@ -7,7 +7,7 @@ getline again reads till \n ,the first element in the buffer
 so no input will be read. To avoid this,  use cin.ignore() before getline.
 //
 
-#include<bits/stdc++.h>
+1. #include<bits/stdc++.h>
 using namespace std;
 int main()
 {
@@ -30,11 +30,14 @@ int main()
 
 }
 
-// Better to use scanf and printf.other option is cin and cout with 
+2. Better to use scanf and printf. other option is cin and cout with 
 sync_with_stdio(0);
 cin.tie(0);
 first option is still faster.
-//
+
+#define IOS ios::sync_with_stdio(0);cin.tie(0)
+
+3.
 scanf("%d",&x);
 scanf("%lld",&x);
 scanf("%s",string);
@@ -46,11 +49,12 @@ scanf("%Lf",long double); // avoid to use this
 double pi=3.14984646788978768;   // don't use long double for printf,80-bit long double. In most cases,
 double is enough, but long double is more accurate
 
+4.
  printf("%0.4lf\n",pi);
 cout << fixed << setprecision(4) << pi << "\n"; // up to 4 decimal points
 //
 
-
+5.
 
 // To compare two floating numbers use 
    if(abs(x-y)<1e-9) 
@@ -60,7 +64,7 @@ cout << fixed << setprecision(4) << pi << "\n"; // up to 4 decimal points
    }
 //
 
-
+6.
 // In Case of Modulo,Use 
 if(x<0) x+=m;
 if result is too large,then use

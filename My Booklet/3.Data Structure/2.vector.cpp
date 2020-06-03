@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -9,7 +10,7 @@ typedef vector<ll>vi;
 #define endl "\n"
 #define fast ios::sync_with_stdio(0);cin.tie(0);
 
-const ll MAXN=1e5+5;
+const ll MAXN=111111;
 int main(){
 fast;
  ll n=6;
@@ -19,6 +20,7 @@ fast;
  //     cin >> in;
  //     v[i]=in;
  // }
+ 
  
  vector<ll>v;
  v.push_back(4);

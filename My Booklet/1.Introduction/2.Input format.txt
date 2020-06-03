@@ -35,8 +35,15 @@ while( (scanf("%lld",&a),(a) ))
     char ch=s.back();
     // to convert character into integer
     ll y=ch-'0';
-    
-    Note: back() function
+
+
+
+5) When input and output are associated with file, just add these lines at the start
+  freopen("input.txt","r",stdin);
+  freopen("input.txt","w",stdout);
+ 
+ 
+ Note: back() function
     Its a feature of C++11 and you need to enable this manually .
 For this go to
 Settings->compiler s-> select global compiler settings[default]-> selected compiler GNU GCC compiler [default]

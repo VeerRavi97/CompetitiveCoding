@@ -27,8 +27,9 @@ void bfs(int s){
            parent[x.first]=u;
            dist[x.first]=dist[u]+1;
            q.push(x.first);
+           }
 
-        }
+        
 
         }
         
