@@ -1,16 +1,18 @@
+// https://www.hackerearth.com/practice/data-structures/advanced-data-structures/trie-keyword-tree/practice-problems/algorithm/dummy4-2/
+
+//https://www.spoj.com/problems/ADAINDEX/
+
 #include <iostream>
 using namespace std;
 #define MAX_NODES 1111111
 #define ALPHABET_SIZE 26
-
 typedef long long ll;
-const ll inf = 1e10;
-int trie[MAX_NODES][ALPHABET_SIZE];
-int mark[MAX_NODES];
-int nnodes = 0;
+ll trie[MAX_NODES][ALPHABET_SIZE];
+ll mark[MAX_NODES];
+ll id = 1;
 void preset()
 {
-    nnodes = 0;
+    id = 1;
     for (ll i = 0; i < MAX_NODES; i++)
     {
         mark[i] = 0;
@@ -19,20 +21,18 @@ void preset()
     }
 }
 
-int id = 1;
-void insert(string s, int pr)
+void insert(string &s)
 {
     int v = 0;
-    for (int i = 0; i < s.length(); i++)
+    for (ll i = 0; i < s.length(); i++)
     {
-
-        int d = s[i] - 'a';
+        ll d = s[i] - 'a';
         if (!trie[v][d])
         {
             trie[v][d] = id++;
         }
         v = trie[v][d];
-        mark[v] = max(mark[v], pr);
+        mark[v] += 1;
     }
 }
 
@@ -44,7 +44,7 @@ int search(string s)
 
         int d = s[i] - 'a';
         if (!trie[v][d])
-            return -1;
+            return 0;
         v = trie[v][d];
     }
     return mark[v];
@@ -52,23 +52,32 @@ int search(string s)
 
 int main()
 {
-    ios::sync_with_stdio();
-    cin.tie(0);
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    preset();
     ll n, q;
     cin >> n >> q;
-
-    preset();
-
     for (ll i = 0; i < n; i++)
     {
         string in;
-        int pr;
-        cin >> in >> pr;
-        insert(in, pr);
+        cin >> in;
+        insert(in);
+        // cout << in << "\n";
+        // for (ll k = 0; k < id; k++)
+        // {
+        //     cout << k << " : ";
+        //     for (ll j = 0; j < ALPHABET_SIZE; j++)
+        //         cout << trie[k][j] << " ";
+        //     cout << "\n";
+        // }
+        // cout << "\n\n";
+        // for (ll k = 0; k < id; k++)
+        // {
+        //     cout << mark[k] << " ";
+        // }
+        // cout << "\n";
     }
     while (q--)
     {

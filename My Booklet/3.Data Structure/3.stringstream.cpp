@@ -47,7 +47,7 @@ int main(){
         cout << x << " ";
     }
     
-    //  string nums="1233,2444,4474,44()2474, 4744747";
+     string nums="1233,2444,4474,44()2474, 4744747";
      
     // string re=", ()";
     //  for(auto ch:re){

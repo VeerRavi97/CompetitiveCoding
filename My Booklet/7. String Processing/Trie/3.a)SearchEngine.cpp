@@ -1,14 +1,18 @@
+// https://www.hackerearth.com/practice/data-structures/advanced-data-structures/trie-keyword-tree/practice-problems/algorithm/search-engine/
+
 #include <iostream>
 using namespace std;
 #define MAX_NODES 1111111
 #define ALPHABET_SIZE 26
+
 typedef long long ll;
-ll trie[MAX_NODES][ALPHABET_SIZE];
-ll mark[MAX_NODES];
-ll id = 1;
+const ll inf = 1e10;
+int trie[MAX_NODES][ALPHABET_SIZE];
+int mark[MAX_NODES];
+int nnodes = 0;
 void preset()
 {
-    id = 1;
+    nnodes = 0;
     for (ll i = 0; i < MAX_NODES; i++)
     {
         mark[i] = 0;
@@ -17,18 +21,20 @@ void preset()
     }
 }
 
-void insert(string &s)
+int id = 1;
+void insert(string s, int pr)
 {
     int v = 0;
-    for (ll i = 0; i < s.length(); i++)
+    for (int i = 0; i < s.length(); i++)
     {
-        ll d = s[i] - 'a';
+
+        int d = s[i] - 'a';
         if (!trie[v][d])
         {
             trie[v][d] = id++;
         }
         v = trie[v][d];
-        mark[v] += 1;
+        mark[v] = max(mark[v], pr);
     }
 }
 
@@ -40,7 +46,7 @@ int search(string s)
 
         int d = s[i] - 'a';
         if (!trie[v][d])
-            return 0;
+            return -1;
         v = trie[v][d];
     }
     return mark[v];
@@ -48,32 +54,23 @@ int search(string s)
 
 int main()
 {
+    ios::sync_with_stdio();
+    cin.tie(0);
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    preset();
     ll n, q;
     cin >> n >> q;
+
+    preset();
+
     for (ll i = 0; i < n; i++)
     {
         string in;
-        cin >> in;
-        insert(in);
-        // cout << in << "\n";
-        // for (ll k = 0; k < id; k++)
-        // {
-        //     cout << k << " : ";
-        //     for (ll j = 0; j < ALPHABET_SIZE; j++)
-        //         cout << trie[k][j] << " ";
-        //     cout << "\n";
-        // }
-        // cout << "\n\n";
-        // for (ll k = 0; k < id; k++)
-        // {
-        //     cout << mark[k] << " ";
-        // }
-        // cout << "\n";
+        int pr;
+        cin >> in >> pr;
+        insert(in, pr);
     }
     while (q--)
     {

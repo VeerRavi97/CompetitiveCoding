@@ -1,3 +1,5 @@
+// https://www.spoj.com/problems/PHONELST/
+
 #include <iostream>
 using namespace std;
 #define MAX_NODES 1111111
@@ -5,40 +7,42 @@ using namespace std;
 
 typedef long long ll;
 const ll inf = 1e10;
-int trie[MAX_NODES][ALPHABET_SIZE];
-int mark[MAX_NODES];
-int id = 1;
-void preset()
+class trieNode
 {
-    id = 1;
-    for (ll i = 0; i < MAX_NODES; i++)
+public:
+    trieNode *children[ALPHABET_SIZE];
+    bool isEnd;
+    char data;
+    trieNode(char data)
     {
-        mark[i] = 0;
-        for (ll j = 0; j < ALPHABET_SIZE; j++)
-            trie[i][j] = 0;
+        for (int i = 0; i < ALPHABET_SIZE; i++)
+            children[i] = nullptr;
+        this->isEnd = false;
+        this->data = data;
     }
-}
+};
 
+trieNode *root = NULL;
 int insert(string s)
 {
-    int v = 0;
+    trieNode *curr = root;
     for (int i = 0; i < s.length(); i++)
     {
 
-        int d = s[i] - '0';
-
-        if (!trie[v][d])
+        int idx = s[i] - '0';
+        if (!curr->children[idx])
         {
-            trie[v][d] = id++;
+            trieNode *nNode = new trieNode(s[i]);
+            curr->children[idx] = nNode;
         }
-        if (mark[v])
+        if (curr->children[idx]->isEnd)
             return 0; // not consistent
 
-        v = trie[v][d];
+        curr = curr->children[idx];
     }
-    mark[v] = 1;
+    curr->isEnd = true;
     for (int c = 0; c < ALPHABET_SIZE; c++)
-        if (trie[v][c])
+        if (curr->children[c])
             return 0; // not  consistent
     return 1;
 }
@@ -70,7 +74,7 @@ int main()
     while (tc--)
     {
 
-        preset();
+        root = new trieNode('\0');
         ll n;
         cin >> n;
 
