@@ -16,36 +16,18 @@ bool isLapindrome(string &str)
 {
     // cout << str << endl;
     int len = str.length();
-    int mid = len / 2;
+    // int mid = len / 2;
     int start = 0;
-    int end = mid - 1;
-    while (start <= end)
+    int end = len - 1;
+    while (start < end)
     {
-        char ch = str[start];
-        charactersCount[ch - 'a']++;
+        char charA = str[start];
+        char charB = str[end];
+        charactersCount[charA - 'a']++;
+        charactersCount[charB - 'a']--;
         start++;
+        end--;
     }
-    // for (int i = 0; i < ALPHABET_SIZE; i++)
-    // {
-    //     cout << charactersCount[i];
-    // }
-
-    start = mid + 1;
-    if (!(len & 1))
-        start = mid;
-    end = len - 1;
-    while (start <= end)
-    {
-        char ch = str[start];
-        charactersCount[ch - 'a']--;
-        start++;
-    }
-    // cout << endl;
-    // for (int i = 0; i < ALPHABET_SIZE; i++)
-    // {
-    //     cout << charactersCount[i];
-    // }
-    // cout << endl;
     for (int i = 0; i < ALPHABET_SIZE; i++)
     {
         // cout << charactersCount[i];

@@ -11,23 +11,22 @@ using namespace std;
 typedef vector<int> vi;
 const int MOD = 1e9 + 7;
 const int INF = 1e18;
-class Solution
+
+int solve(int n, int k, int x, int y)
 {
-public:
-    int solve(int n, int k, int x, int y)
+    set<int> s;
+    while (true)
     {
-        if (x == y)
-            return 1;
-        if (k == 0)
-            return 0;
-        int diff = y - x;
-        if (diff < 0)
-            diff += n;
-        if (diff % k == 0)
-            return 1;
-        return 0;
+        if (s.count(x))
+            break;
+        s.insert(x);
+        x = (x + k) % n;
     }
-};
+    if (s.count(y))
+        return 1;
+    return 0;
+}
+
 int32_t main()
 {
 #ifndef ONLINE_JUDGE
@@ -41,8 +40,8 @@ int32_t main()
     {
         int n, k, x, y;
         cin >> n >> k >> x >> y;
-        Solution Obj;
-        bool ans = Obj.solve(n, k, x, y);
+
+        bool ans = solve(n, k, x, y);
         if (!ans)
             cout << "NO" << endl;
         else

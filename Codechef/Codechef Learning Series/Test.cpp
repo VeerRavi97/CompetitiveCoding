@@ -1,29 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define IOS                  \
-    ios::sync_with_stdio(0); \
-    cin.tie(0);              \
-    cout.tie(0);
-#define int long long
+#define ll long long
+#define MOD 1e9 + 7
+#define INF 1e18
 #define endl '\n'
 #define all(c) c.begin(), c.end()
-
 typedef vector<int> vi;
-const int MOD = 1e9 + 7;
-int32_t main()
+void file_io()
 {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    IOS;
-    int num;
-    int isRead = false;
-    while (cin >> num)
+}
+
+int main()
+{
+    clock_t start = clock();
+    file_io();
+    int tc;
+    // cin >> tc;
+    while (tc--)
     {
-        if (isRead == false && num != 42)
-            cout << num << endl;
-        if (num == 42)
-            isRead = true;
+        int n;
+        cin >> n;
     }
+    clock_t end = clock();
+#ifndef ONLINE_JUDGE
+    double cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+    cout << "\n\nExecuted In: " << cpu_time_used << endl;
+#endif
 }
